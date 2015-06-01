@@ -26,6 +26,6 @@ docker build -t cfljam/pyrat .
 ```
 docker run --rm -p 8888:8888 -v /Users/:/Users -it cfljam/pyrat
 ```
-- point your browser to localhost:8888 . You should see something like this:
+- point your browser to localhost:8888 . You should see something like the screen below. Navigate the links to where you want to work and select **new** to create content.
 ![Jupyter Screen](https://dl.dropboxusercontent.com/u/8064851/images/JupyterScreen%20Shot.png)
 
