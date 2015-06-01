@@ -1,10 +1,20 @@
 # pyRat
 
-## Docker Container for Jupyter notebooks with R kernel and Cell Magics
+## Docker Container for Jupyter notebooks with R kernel and R Cell Magic
 
 - R install using [Littler](http://dirk.eddelbuettel.com/code/littler.html) copied from  rocker https://github.com/rocker-org/rocker
 - R kernel for Jupyter provided by https://github.com/IRkernel/IRkernel
 - R2Py from http://rpy.sourceforge.net/
+
+Example Notebooks
+------------------
+
+- [R kernel](https://github.com/cfljam/pyRat/blob/master/Notebooks/Jupyter%20Notebooks%20with%20the%20R%20kernel.ipynb)
+- [Python kernel + R2Py R cell magic](https://github.com/cfljam/pyRat/blob/master/Notebooks/Using%20R2Py%20in%20Jupyter%20NOtebooks.ipynb)
+
+
+
+-----------------
 
 ### To Build Docker Image
 
