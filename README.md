@@ -25,5 +25,5 @@ docker build -t cfljam/pyrat .
 docker run --rm -p 8888:8888 -v /Users/:/Users -it cfljam/pyrat:dev
 ```
 - point your browser to localhost:8888 
-- ensure that  
-
+- ensure that there is a port forwarding rule for port 8888 on the virtual host (on Virtualbox in this case) 
+![Virtualbox port forward rule](https://dl.dropboxusercontent.com/u/8064851/images/VirtualBoxPortForwardiPynbExample.png)
