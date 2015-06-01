@@ -1,6 +1,6 @@
 # pyRat
 
-## Docker Container for Jupyter notebooks with R kernel
+## Docker Container for Jupyter notebooks with R kernel and Cell Magics
 
 - R install based on rocker https://github.com/rocker-org/rocker
 - R kernel for Jupyter provided by https://github.com/IRkernel/IRkernel
