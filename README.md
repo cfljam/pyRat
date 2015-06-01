@@ -2,8 +2,9 @@
 
 ## Docker Container for Jupyter notebooks with R kernel and Cell Magics
 
-- R install based on rocker https://github.com/rocker-org/rocker
+- R install using [Littler](http://dirk.eddelbuettel.com/code/littler.html) copied from  rocker https://github.com/rocker-org/rocker
 - R kernel for Jupyter provided by https://github.com/IRkernel/IRkernel
+- R2Py from http://rpy.sourceforge.net/
 
 ### To Build Docker Image
 
