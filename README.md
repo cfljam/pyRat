@@ -14,7 +14,7 @@
 git clone https://github.com/cfljam/pyRat
 cd pyRat
 ```
-- build the image
+- build the image (you can call it anything you want-but in this case repo name, no other tags)
 ```
 docker build -t cfljam/pyrat .
 ```
