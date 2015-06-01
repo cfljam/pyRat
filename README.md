@@ -14,7 +14,8 @@ git clone https://github.com/cfljam/pyRat
 cd pyRat
 ```
 - build the image
-```docker build -t cfljam/pyrat .
+```
+docker build -t cfljam/pyrat .
 ```
 - run the container, sharing default Virtualbox shared directory mapping /Users
 ```
