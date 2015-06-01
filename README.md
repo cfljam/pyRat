@@ -26,5 +26,6 @@ docker build -t cfljam/pyrat .
 ```
 docker run --rm -p 8888:8888 -v /Users/:/Users -it cfljam/pyrat
 ```
-- point your browser to localhost:8888 . You
+- point your browser to localhost:8888 . You should see something like this:
+![Jupyter Screen](https://dl.dropboxusercontent.com/u/8064851/images/JupyterScreen%20Shot.png)
 
