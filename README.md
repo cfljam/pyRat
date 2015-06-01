@@ -22,7 +22,7 @@ docker build -t cfljam/pyrat .
 ### To run the image
 - run the container, sharing default Virtualbox shared directory mapping /Users
 ```
-docker run -rm -p 8888:8888 -v /Users/:/Users -it cfljam/pyrat:dev
+docker run --rm -p 8888:8888 -v /Users/:/Users -it cfljam/pyrat:dev
 ```
 - point your browser to localhost:8888 
 - ensure that  
