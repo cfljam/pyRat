@@ -2,6 +2,11 @@ FROM  ipython/scipystack
 
 MAINTAINER John McCallum john.mccallum@plantandfood.co.nz
 
+### Set PFR proxies
+
+ENV http_proxy  http://proxy.pfr.co.nz:8080
+ENV https_proxy  https://proxy.pfr.co.nz:8080
+
 
 ####### R install ######################
 ## Following https://registry.hub.docker.com/u/rocker/r-base/dockerfile ####
