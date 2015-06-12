@@ -45,18 +45,15 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 
 ENV LC_ALL en_US.UTF-8
 
-## Use Ubuntu repo at CRAN, and use RStudio CDN as mirror
-## This gets us updated r-base, r-base-dev, r-recommended and littler
-RUN gpg --keyserver pgpkeys.mit.edu --recv-key 51716619E084DAB9  \
-&& gpg -a --export 51716619E084DAB9 | sudo apt-key add  - \
-  && echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" > /etc/apt/sources.list.d/r-cran.list
+RUN  echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" > /etc/apt/sources.list.d/r-cran.list
 
-ENV R_BASE_VERSION 3.2.0
+
+ENV R_BASE_VERSION 3.1.2
 
 ## Now install R and littler, and create a link for littler in /usr/local/bin
 ## Also set a default CRAN repo, and make sure littler knows about it too
 RUN apt-get update \
-	&& apt-get install  -y --no-install-recommends \
+  && apt-get install  -y --force-yes --no-install-recommends \
 		littler \
 		r-base=${R_BASE_VERSION}* \
 		r-base-dev=${R_BASE_VERSION}* \
