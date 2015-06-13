@@ -45,6 +45,9 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 
 ENV LC_ALL en_US.UTF-8
 
+###NOT
+### see https://gurrier.wordpress.com/2010/10/02/downlolading-repo-keys-from-behind-a-corporate-firewall/
+
 RUN  echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" > /etc/apt/sources.list.d/r-cran.list
 
 
