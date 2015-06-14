@@ -52,7 +52,7 @@ RUN  echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" > /etc/apt/sour
 
 ## Use Ubuntu repo at CRAN, and use RStudio CDN as mirror
 ## This gets us updated r-base, r-base-dev, r-recommended and littler
-RUN gpg --keyserver pgpkeys.mit.edu:80 --recv-key 51716619E084DAB9  \
+RUN gpg --keyserver hkp://pgpkeys.mit.edu:80 --recv-key 51716619E084DAB9  \
 && gpg -a --export 51716619E084DAB9 | sudo apt-key add  - \
   && echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" > /etc/apt/sources.list.d/r-cran.list
 
@@ -114,6 +114,7 @@ CMD  ipython notebook --notebook-dir=/Users --ip=0.0.0.0 --port=8888 --no-browse
 ##################### INSTALLATION END #####################
 
 ## TEST
+WORKDIR /tmp
 ADD ./test-suite.sh /tmp/test-suite.sh
 RUN ./test-suite.sh
 
