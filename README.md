@@ -21,9 +21,17 @@ Example Notebooks
 - this example uses Virtualbox as host
 - install and configure docker-machine https://docs.docker.com/machine/#getting-started-with-docker-machine-using-a-local-vm
 - clone the repo from Github
+
+
+
 ```
 git clone https://github.com/cfljam/pyRat
 cd pyRat
+```
+- if you are behind a proxy , insert lines at the head of the dockerfile
+```
+ENV http_proxy  http://my.proxy.url:my_proxy_port
+ENV https_proxy  https://my.proxy.url:my_proxy_port
 ```
 - build the image (you can call it anything you want-but in this case repo name, no other tags)
 ```
