@@ -109,7 +109,12 @@ RUN set -xe ;\
   cd RISE ;\
   python setup.py install 
   
-
+## set up for Gisting Notebooks
+RUN set -xe ;\
+  apt-get  install -y  ruby; \
+  gem install gist
+  
+  
 
 ##########################################
 
