@@ -104,7 +104,8 @@ RUN install.r devtools \
 
 ### Install the Reveal Slideshow
 
-RUN set -xe ;\https://github.com/damianavila/RISE ;\
+RUN set -xe ;\
+	cachebust=ba5620be73  git clone https://github.com/damianavila/RISE ;\
   cd RISE ;\
   python setup.py install 
   
