@@ -102,6 +102,14 @@ RUN install.r devtools \
 && echo "IRkernel::installspec()" | r
 
 
+### Install the Reveal Slideshow
+
+RUN set -xe ;\https://github.com/damianavila/RISE ;\
+  cd RISE ;\
+  python setup.py install 
+  
+
+
 ##########################################
 
 ### Launch ipynb as default
