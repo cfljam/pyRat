@@ -110,8 +110,9 @@ RUN set -xe ;\
   python setup.py install 
   
 ## set up for Gisting Notebooks
-RUN set -xe ;\
-  apt-get  install -y  ruby; \
+RUN apt-get update \
+  && apt-get install  -y --force-yes --no-install-recommends \
+	ruby; \
   gem install gist
   
   
