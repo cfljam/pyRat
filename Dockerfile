@@ -2,6 +2,11 @@ FROM  ipython/scipystack
 
 MAINTAINER John McCallum john.mccallum@plantandfood.co.nz
 
+### Set PFR proxies
+
+ENV http_proxy  http://proxy.pfr.co.nz:8080
+ENV https_proxy  https://proxy.pfr.co.nz:8080
+
 
 ####### R install ######################
 ## Following https://registry.hub.docker.com/u/rocker/r-base/dockerfile ####
@@ -40,9 +45,14 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 
 ENV LC_ALL en_US.UTF-8
 
+###NOT
+### see https://gurrier.wordpress.com/2010/10/02/downlolading-repo-keys-from-behind-a-corporate-firewall/
+
+RUN  echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" > /etc/apt/sources.list.d/r-cran.list
+
 ## Use Ubuntu repo at CRAN, and use RStudio CDN as mirror
 ## This gets us updated r-base, r-base-dev, r-recommended and littler
-RUN gpg --keyserver pgpkeys.mit.edu --recv-key 51716619E084DAB9  \
+RUN gpg --keyserver hkp://pgpkeys.mit.edu:80 --recv-key 51716619E084DAB9  \
 && gpg -a --export 51716619E084DAB9 | sudo apt-key add  - \
   && echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" > /etc/apt/sources.list.d/r-cran.list
 
@@ -51,7 +61,7 @@ ENV R_BASE_VERSION 3.2.0
 ## Now install R and littler, and create a link for littler in /usr/local/bin
 ## Also set a default CRAN repo, and make sure littler knows about it too
 RUN apt-get update \
-	&& apt-get install  -y --no-install-recommends \
+  && apt-get install  -y --force-yes --no-install-recommends \
 		littler \
 		r-base=${R_BASE_VERSION}* \
 		r-base-dev=${R_BASE_VERSION}* \
@@ -92,6 +102,21 @@ RUN install.r devtools \
 && echo "IRkernel::installspec()" | r
 
 
+### Install the Reveal Slideshow
+
+RUN set -xe ;\
+	cachebust=ba5620be73  git clone https://github.com/damianavila/RISE ;\
+  cd RISE ;\
+  python setup.py install 
+  
+## set up for Gisting Notebooks
+RUN apt-get update \
+  && apt-get install  -y --force-yes --no-install-recommends \
+	ruby; \
+  gem install gist
+  
+  
+
 ##########################################
 
 ### Launch ipynb as default
@@ -104,6 +129,7 @@ CMD  ipython notebook --notebook-dir=/Users --ip=0.0.0.0 --port=8888 --no-browse
 ##################### INSTALLATION END #####################
 
 ## TEST
+WORKDIR /tmp
 ADD ./test-suite.sh /tmp/test-suite.sh
 RUN ./test-suite.sh
 
