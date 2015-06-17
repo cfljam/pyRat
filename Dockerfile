@@ -2,10 +2,7 @@ FROM  ipython/scipystack
 
 MAINTAINER John McCallum john.mccallum@plantandfood.co.nz
 
-### Set PFR proxies
 
-ENV http_proxy  http://proxy.pfr.co.nz:8080
-ENV https_proxy  https://proxy.pfr.co.nz:8080
 
 
 ####### R install ######################
@@ -45,10 +42,7 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 
 ENV LC_ALL en_US.UTF-8
 
-###NOT
-### see https://gurrier.wordpress.com/2010/10/02/downlolading-repo-keys-from-behind-a-corporate-firewall/
 
-RUN  echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" > /etc/apt/sources.list.d/r-cran.list
 
 ## Use Ubuntu repo at CRAN, and use RStudio CDN as mirror
 ## This gets us updated r-base, r-base-dev, r-recommended and littler
