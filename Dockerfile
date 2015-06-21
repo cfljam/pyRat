@@ -2,6 +2,12 @@ FROM  ipython/scipystack
 
 MAINTAINER John McCallum john.mccallum@plantandfood.co.nz
 
+### Set PFR proxies
+
+ENV http_proxy  http://proxy.pfr.co.nz:8080
+ENV https_proxy  https://proxy.pfr.co.nz:8080
+ENV HTTP_PROXY  http://proxy.pfr.co.nz:8080
+ENV HTTPS_PROXY  https://proxy.pfr.co.nz:8080
 
 
 
@@ -101,15 +107,15 @@ RUN install.r devtools \
 RUN set -xe ;\
 	cachebust=ba5620be73  git clone https://github.com/damianavila/RISE ;\
   cd RISE ;\
-  python setup.py install 
-  
+  python setup.py install
+
 ## set up for Gisting Notebooks
 RUN apt-get update \
   && apt-get install  -y --force-yes --no-install-recommends \
 	ruby; \
   gem install gist
-  
-  
+
+
 
 ##########################################
 
