@@ -2,9 +2,6 @@ FROM  ipython/scipystack
 
 MAINTAINER John McCallum john.mccallum@plantandfood.co.nz
 
-
-
-
 ####### R install ######################
 ## Following https://registry.hub.docker.com/u/rocker/r-base/dockerfile ####
 
@@ -101,15 +98,15 @@ RUN install.r devtools \
 RUN set -xe ;\
 	cachebust=ba5620be73  git clone https://github.com/damianavila/RISE ;\
   cd RISE ;\
-  python setup.py install 
-  
+  python setup.py install
+
 ## set up for Gisting Notebooks
 RUN apt-get update \
   && apt-get install  -y --force-yes --no-install-recommends \
 	ruby; \
   gem install gist
-  
-  
+
+
 
 ##########################################
 
