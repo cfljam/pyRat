@@ -6,6 +6,7 @@
 - R kernel for Jupyter provided by https://github.com/IRkernel/IRkernel
 - R2Py from http://rpy.sourceforge.net/
 -  REVEAL slideshows from @damianavila https://github.com/damianavila/RISE
+-  - bash kernel
 
 Example Notebooks
 ------------------
