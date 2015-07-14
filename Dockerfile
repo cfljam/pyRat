@@ -106,7 +106,8 @@ RUN apt-get update \
 	ruby; \
   gem install gist
 
-
+### Bash Shell
+RUN pip install bash_kernel
 
 ##########################################
 
