@@ -77,6 +77,7 @@ RUN install2.r --error \
     data.table\
     dplyr \
     ggplot2 \
+    Rcpp \
     reshape2 \
     RPostgreSQL \
     stringi \
@@ -97,7 +98,7 @@ RUN install.r devtools \
 RUN apt-get update \
   && apt-get install  -y --force-yes --no-install-recommends  \
   postgresql postgresql-contrib \
-  && echo "library(devtools) ; install_github("RcppCore/Rcpp","rstats-db/DBI","rstats-db/RPostgres")" | r
+  && echo "library(devtools) ; install_github("rstats-db/DBI","rstats-db/RPostgres")" | r
 
 ## Install psycopg2
 
