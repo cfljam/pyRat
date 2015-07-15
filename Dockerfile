@@ -95,8 +95,8 @@ RUN install.r devtools \
 ## Install  RPostgres
 RUN apt-get update \
   && apt-get install  -y --force-yes --no-install-recommends  \
-  postgresql postgresql-contrib &&
- echo "library(devtools) ; install_github("RcppCore/Rcpp","RcppCore/Rcpp","rstats-db/RPostgres")" | r
+  postgresql postgresql-contrib \
+  && echo "library(devtools) ; install_github("RcppCore/Rcpp","RcppCore/Rcpp","rstats-db/RPostgres")" | r
 
 ## Install psycopg2
 
