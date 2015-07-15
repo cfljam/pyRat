@@ -124,7 +124,7 @@ RUN pip install bash_kernel
 ### Set notebook-dir  to VirtualBox Default Drive Share /Users
 ## --notebook-dir=
 
-CMD  ipython notebook --notebook-dir=/Users --ip=0.0.0.0 --port=8888 --no-browser
+CMD  ipython notebook  --ip=0.0.0.0 --port=8888 --no-browser
 
 ##################### INSTALLATION END #####################
 
