@@ -94,15 +94,6 @@ RUN install.r devtools \
 &&echo "library(devtools) ; install_github(c('IRkernel/IRdisplay','IRkernel/IRkernel'))" | r \
 && echo "IRkernel::installspec()" | r
 
-## Install  RPostgres
-RUN apt-get update \
-  && apt-get install  -y --force-yes --no-install-recommends  \
-  postgresql postgresql-contrib \
-  && echo "library(devtools) ; install_github("rstats-db/DBI","rstats-db/RPostgres")" | r
-
-## Install psycopg2
-
-
 ### Install the Reveal Slideshow
 
 RUN set -xe ;\
