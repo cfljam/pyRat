@@ -28,6 +28,7 @@ RUN set -xe ;\
     libpq-dev \
     libxml2 \
     libxml2-dev \
+    libxml2-utils \
     nano\
     wget \
   && rm -rf /var/lib/apt/lists/*
