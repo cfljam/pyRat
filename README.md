@@ -18,6 +18,14 @@ Example Notebooks
 
 -----------------
 
+### To Use
+
+- pull image from Dockerhub and run default
+
+```
+docker run --rm -it -p 8888:8888 cfljam/pyrat
+```
+
 ### To Build Docker Image
 
 - this example uses Virtualbox as host
