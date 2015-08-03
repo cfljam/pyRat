@@ -81,6 +81,7 @@ RUN install2.r --error \
     reshape2 \
     RPostgreSQL \
     stringi \
+    gistr \
     tidyr
 
 ## Install rpy2 for R magics
