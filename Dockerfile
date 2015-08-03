@@ -100,6 +100,7 @@ RUN install.r devtools \
 RUN set -xe ;\
 	cachebust=ba5620be73  git clone https://github.com/damianavila/RISE ;\
   cd RISE ;\
+  git checkout tags/3.x ;\
   python setup.py install
 
 ## set up for Gisting Notebooks
