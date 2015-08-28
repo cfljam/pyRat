@@ -25,6 +25,16 @@ Example Notebooks
 ```
 docker run --rm -it -p 8888:8888 cfljam/pyrat
 ```
+Pull the image from Dockerhub and run a notebook server locally on port 8888 with Documents dir on host mounted
+
+```
+docker run --rm -it -p 8888:8888 \
+-v ~/Documents/:/Documents cfljam/socker \
+sh -c " ipython notebook --ip=0.0.0.0 --port=8888 \
+--no-browser --notebook-dir=/Documents"
+```
+We invoke the notebook servers in a **sh** call to avoid kernel instability in OSX and Windows VM hosts  ( See https://github.com/ipython/ipython/issues/7062) 
+
 
 ### To Build Docker Image
 
