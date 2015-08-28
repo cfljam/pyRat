@@ -42,8 +42,6 @@ We invoke the notebook servers in a **sh** call to avoid kernel instability in O
 - install and configure docker-machine https://docs.docker.com/machine/#getting-started-with-docker-machine-using-a-local-vm
 - clone the repo from Github
 
-
-
 ```
 git clone https://github.com/cfljam/pyRat
 cd pyRat
@@ -53,6 +51,15 @@ cd pyRat
 ENV http_proxy  http://my.proxy.url:my_proxy_port
 ENV https_proxy  https://my.proxy.url:my_proxy_port
 ```
+- to avoid running as root you might want to add a user with a
+```
+RUN useradd <my_login>
+```
+- and make this the default with a [USER](https://docs.docker.com/reference/builder/#user) line
+```
+USER <my_login>
+```
+
 - build the image (you can call it anything you want-but in this case repo name, no other tags)
 ```
 docker build -t cfljam/pyrat .
