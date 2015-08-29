@@ -1,6 +1,6 @@
 FROM  ipython/scipystack
 
-MAINTAINER John McCallum john.mccallum@plantandfood.co.nz
+MAINTAINER John McCallum cfljam@users.noreply.github.com
 
 ####### R install ######################
 ## Following https://registry.hub.docker.com/u/rocker/r-base/dockerfile ####
@@ -40,8 +40,6 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 
 ENV LC_ALL en_US.UTF-8
 
-
-
 ## Use Ubuntu repo at CRAN, and use RStudio CDN as mirror
 ## This gets us updated r-base, r-base-dev, r-recommended and littler
 RUN gpg --keyserver hkp://pgpkeys.mit.edu:80 --recv-key 51716619E084DAB9  \
@@ -74,23 +72,22 @@ RUN mkdir -p /etc/R \
 
 ## Install  R packages for Generic Data Manipulation
 ADD R-requirements.txt /tmp/
-RUN install2.r --error $(cat /tmp/R-requirements.txt) 
+RUN install2.r --error $(cat /tmp/R-requirements.txt)
 
 ## Install rpy2 for R magics
 RUN python2 /usr/local/bin/pip   --default-timeout=100 install rpy2
 
-##Install R kernel
+##Install R kernel for all users
 RUN install.r devtools \
 && git clone https://github.com/armstrtw/rzmq.git --recursive \
 && echo "library(devtools) ; install_local('./rzmq')" | r  \
 && echo "library(devtools) ; install_github('IRkernel/repr' )" | r  \
-&&echo "library(devtools) ; install_github(c('IRkernel/IRdisplay','IRkernel/IRkernel'))" | r \
-&& echo "IRkernel::installspec()" | r
+&& echo "library(devtools) ; install_github(c('IRkernel/IRdisplay','IRkernel/IRkernel'))" | r \
+&& echo "IRkernel::installspec(user=FALSE)" | r
 
 ### Install the Reveal Slideshow
-
 RUN set -xe ;\
-	cachebust=ba5620be73  git clone https://github.com/damianavila/RISE ;\
+	git clone https://github.com/damianavila/RISE ;\
   cd RISE ;\
   git checkout tags/3.x ;\
   python setup.py install
@@ -104,12 +101,11 @@ RUN apt-get update \
 ### Bash Shell
 RUN pip install bash_kernel
 
+#########
+## Clean up
+RUN rm -rf /tmp/*
 ##########################################
-
-### Launch ipynb as default
-
-### Set notebook-dir  to VirtualBox Default Drive Share /Users
-## --notebook-dir=
+### Launch ipynb as default 
 
 CMD  ipython notebook  --ip=0.0.0.0 --port=8888 --no-browser
 
@@ -119,6 +115,3 @@ CMD  ipython notebook  --ip=0.0.0.0 --port=8888 --no-browser
 WORKDIR /tmp
 ADD ./test-suite.sh /tmp/test-suite.sh
 RUN ./test-suite.sh
-
-## Clean up
-RUN rm -rf /tmp/*
