@@ -73,16 +73,8 @@ RUN mkdir -p /etc/R \
   && echo 'options(repos = list(CRAN = "http://cran.rstudio.com/"))' >> /etc/R/Rprofile.site
 
 ## Install  R packages for Generic Data Manipulation
-RUN install2.r --error \
-    data.table\
-    dplyr \
-    ggplot2 \
-    Rcpp \
-    reshape2 \
-    RPostgreSQL \
-    stringi \
-    gistr \
-    tidyr
+ADD R-requirements.txt /tmp/
+RUN install2.r --error $(cat /tmp/R-requirements.txt) 
 
 ## Install rpy2 for R magics
 RUN python2 /usr/local/bin/pip   --default-timeout=100 install rpy2

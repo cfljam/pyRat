@@ -1,0 +1,9 @@
+    data.table
+    dplyr 
+    ggplot2 
+    Rcpp 
+    reshape2 
+    RPostgreSQL 
+    stringi 
+    gistr 
+    tidyr
